@@ -28,22 +28,16 @@ class Login extends React.Component {
 				password: this.state.password
 			})
 			.then((res) => {
+				// need to add token
 				localStorage.setItem('token');
 				// clears form
 				this.setState({
 					username: '',
 					password: ''
 				});
-				this.PaymentResponse.history.push('');
+				this.props.history.push('/game');
 			})
-			.catch((err) => {
-				alert('Enter Username and Password');
-				this.setState({
-					username: '',
-					password: ''
-				});
-				console.log(err);
-			});
+			.catch((err) => console.log(err));
 	};
 
 	render() {
